@@ -2,6 +2,10 @@
 
 <head>
     <style>
+        .changedHistory {
+            color: #f00;
+            font-weight: bold;
+        }
         .ylabel {
             display: block;
             float: left;
@@ -109,6 +113,17 @@
 
         function loadHistory(current) {
             console.log(current);
+            
+            for (var prop in current) {
+                
+                if (current[prop].changed) {
+                    $y.el("" + prop).addClass("changedHistory").text(current[prop].value);    
+                } else {
+                    $y.el("" + prop).text(current[prop].value);    
+                }
+            }
+            
+            /*
             $y.el("operacao").text(current.operacao);
             $y.el("dataOperacao").text(current.dataOperacao);
             $y.el("acaoFiscal").text(current.acaoFiscal);
@@ -118,6 +133,7 @@
             $y.el("orgaoExecutor").text(current.orgaoExecutor).upper();
             $y.el("valorEsperado").text(current.valorEsperado.toString());
             $y.el("duracaoAcao").text(current.duracaoAcao);
+            */
         }
 
         function previous() {

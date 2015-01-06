@@ -8,6 +8,19 @@ var $y = (function () {
             this.elem = document.getElementById(String("") + id);
             return this;
         },
+        setClass: function (classToAdd) {
+            
+            var currentClassValue = this.elem.className;
+      
+            if (currentClassValue.indexOf(classToAdd) == -1) {
+                if ((currentClassValue == null) || (currentClassValue === "")) {
+                    this.elem.className = classToAdd;
+                } else {
+                    this.elem.className += " " + classToAdd;
+                }
+            }
+            return this.elem;
+        },
         val: function (value) {
             if (value) {
                 this.elem.value = value;
